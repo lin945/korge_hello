@@ -22,13 +22,14 @@ korge {
 	//targetDesktop()
 	//targetIos()
 	//targetAndroid()
-
+    jvmMainClassName="com.lin945.korge.MainKt"
 	serializationJson()
 }
 
 
 dependencies {
     add("commonMainApi", project(":deps"))
-    //add("commonMainApi", project(":korge-dragonbones"))
+    add("commonMainApi", "net.mamoe.yamlkt:yamlkt:0.13.0")
+    //add("commonMainApi", project(":common"))
 }
 
