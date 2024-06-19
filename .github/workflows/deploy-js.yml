@@ -30,7 +30,7 @@ jobs:
       - { uses: actions/checkout@v4 }
       - { name: Set up JDK, uses: actions/setup-java@v3, with: { distribution: "${{ env.JAVA_DISTRIBUTION }}", java-version: "${{ env.JAVA_VERSION }}" } }
       - { name: Prepare Gradle, uses: gradle/actions/setup-gradle@417ae3ccd767c252f5661f1ace9f835f9654f2b5 } # v3.1.0
-      - { name: kotlinStoreYarnLock, run: ./gradlew kotlinStoreYarnLock }
+#      - { name: kotlinStoreYarnLock, run: ./gradlew kotlinStoreYarnLock }
       - { name: Buid JS bundle, run: ./gradlew jsBrowserProductionWebpack }
       - { name: Upload artifact, uses: actions/upload-pages-artifact@v3, with: { path: 'build/dist/js/productionExecutable' } }
       - { name: Deploy 🚀 to GitHub Pages, id: deployment, uses: actions/deploy-pages@v4}
