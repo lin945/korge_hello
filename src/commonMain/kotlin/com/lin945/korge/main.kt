@@ -64,7 +64,7 @@ class MyScene : Scene() {
                         }
                     }
                     bitmap.setRgba(posLocal.x.toInt(), posLocal.y.toInt(), randomColor)
-                    bitmap.showImageAndWait()
+                    invalidateColorTransform()
 
 //                bitmap.writePixelsUnsafe(posLocal.x.toInt(), posLocal.y.toInt(), 2, 2, pixels, offset = 0)
                 }
