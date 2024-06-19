@@ -1,5 +1,5 @@
-# KProject: https://github.com/korlibs/kproject
 dependencies:
+- https://github.com/korlibs/korge-image-formats/tree/v0.1.2/korim-qr##041e004b675ceb4bc57a408b32124661e3cf5be7
 #- https://github.com/korlibs/korge-fleks/tree/a37c78f57469de9aaf69537325e41731cb94f8bf/korge-fleks
 #- https://github.com/korlibs/korge-ldtk/tree/f5944022553b6ee70ec4879193e6de1e716e73e1/korge-ldtk
 #- https://github.com/korlibs/korge-compose/tree/0.0.2/korge-compose

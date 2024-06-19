@@ -1,3 +1,11 @@
+[versions]
+kotlin-version = "1.9.22"
+ktor_version = "2.3.11"
 [plugins]
 korge = { id = "com.soywiz.korge", version = "5.3.2" }
 #korge = { id = "com.soywiz.korge", version = "999.0.0.999" }
+[libraries]
+ktor-client-core = { module = "io.ktor:ktor-client-core", version.ref = "ktor_version" }
+ktor-client-js = { module = "io.ktor:ktor-client-js", version.ref = "ktor_version" }
+ktor-client-okhttp = { module = "io.ktor:ktor-client-okhttp", version.ref = "ktor_version" }
+ktor-serialization = { module = "io.ktor:ktor-client-serialization", version.ref = "ktor_version" }
