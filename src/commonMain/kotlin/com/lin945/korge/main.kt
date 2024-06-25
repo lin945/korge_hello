@@ -1,10 +1,9 @@
 package com.lin945.korge
 
+import com.lin945.korge.scene.*
 import korlibs.image.bitmap.*
 import korlibs.image.color.*
-import korlibs.image.format.*
 import korlibs.image.qr.*
-import korlibs.io.file.std.*
 import korlibs.korge.*
 import korlibs.korge.input.*
 import korlibs.korge.scene.*
@@ -16,10 +15,14 @@ import korlibs.render.*
 import kotlin.math.*
 import kotlin.random.*
 
-suspend fun main() = Korge(windowSize = Size(512, 800), backgroundColor = Colors["#2b2b2b"]) {
+suspend fun main() = Korge(
+    windowSize = Size(800, 600),
+    virtualSize = Size(320, 240),
+    backgroundColor = Colors["#2b2b2b"],
+) {
     val sceneContainer = sceneContainer()
     LocalVfs.readConfig()
-    sceneContainer.changeTo { MyScene() }
+    sceneContainer.changeTo { LoadingScene() }
 }
 
 class MyScene : Scene() {
@@ -31,15 +34,15 @@ class MyScene : Scene() {
     }
 
     private suspend fun SContainer.buildUI() {
-        val bitmap = Bitmap32(views.virtualWidth, 500,true)
+        val bitmap = Bitmap32(views.virtualWidth, 500, true)
         val s = uiScrollable(Size(views.virtualWidth, 500)) {
 //            NativeImage()
-            image(bitmap){
+            image(bitmap) {
                 onClick {
 //                bitmap.fill(Colors.RED)
                     val posLocal = it.currentPosLocal
-                    val clickX=posLocal.x.toInt()
-                    val clickY=posLocal.y.toInt()
+                    val clickX = posLocal.x.toInt()
+                    val clickY = posLocal.y.toInt()
                     println(posLocal)
                     val pixels = IntArray(2 * 2)
                     val randomColor = RGBA(
@@ -73,7 +76,7 @@ class MyScene : Scene() {
 
             }
         }
-        image(QR.msg("Hello from KorIM-QR!")){
+        image(QR.msg("Hello from KorIM-QR!")) {
             scale(6.0).also { it.smoothing = false }
             alignTopToBottomOf(s)
         }//.filters(DropshadowFilter(0.0, 0.0, blurRadius = 12.0, shadowColor = Colors.BLACK))
@@ -88,7 +91,7 @@ class MyScene : Scene() {
     private suspend fun SContainer.buildUI2() {
         val pixelSize = 10 // 像素块的大小
         val pixels = mutableMapOf<Pair<Int, Int>, RGBA>() // 存储像素颜色的映射
-        val block=uiScrollable(Size(views.virtualWidth, 500))
+        val block = uiScrollable(Size(views.virtualWidth, 500))
 
         // 绘制像素点
         fun drawPixel(x: Int, y: Int, color: RGBA) {
@@ -110,7 +113,11 @@ class MyScene : Scene() {
         container {
             onClick { e ->
                 val currentPosLocal = e.currentPosLocal
-                drawPixel((currentPosLocal.x / pixelSize).toInt(), (currentPosLocal.y / pixelSize).toInt(), Colors.WHITE)
+                drawPixel(
+                    (currentPosLocal.x / pixelSize).toInt(),
+                    (currentPosLocal.y / pixelSize).toInt(),
+                    Colors.WHITE
+                )
                 updateCanvas()
             }
             onMouseDrag { e ->
