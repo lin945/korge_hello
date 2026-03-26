@@ -22,7 +22,7 @@ suspend fun main() = Korge(
 ) {
     val sceneContainer = sceneContainer()
     LocalVfs.readConfig()
-    sceneContainer.changeTo { LoadingScene() }
+    sceneContainer.changeTo { ChromeRunnerScene() }
 }
 
 class MyScene : Scene() {
